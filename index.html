@@ -1,40 +1,169 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+        <title>continuous delivery</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link
+        rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    </head>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown>
+                    <textarea data-template>
+						# continuous delivery
+						
+						a discussion with Tradify
+                    </textarea>
+				</section>
+				<section data-markdown data-auto-animate>
+                    <textarea data-template>
+						# hello.
+						
+						I'm Luke
+						<aside class="notes">
+							I've been fortunate to have a career working on a variety of interesting problems at interesting times.
+							I find the following fascinating:
+							1. the productivity of software teams and how best to deliver value
+							2. the optimal way to structure and architect software systems and how this affects 1.
+
+							I have:
+							- worked on web and fat client systems for government
+							- worked on the facebook for windows phone product team
+							- worked with azure in the early days of cloud computing
+							- worked on operations/monitoring for a bank
+							- worked on lots of cloud saas products including joining Xero as it scaled outside of ANZ and migrated to AWS
+							- worked on an early stage startup uneeq in the conversational AI space
+
+							I've got a couple of slides, with three takeaways:
+							1. Continuous delivery enables evolutionary architecture 
+							2. Continuous delivery reduces waste (and accelerates delivery of value)
+							3. Continuous delivery does not compromise stability
+						</aside>
+                    </textarea>
+                </section>
+				<section data-background-transition="slide" data-background="images/rick-mason-2FaCKyEEtis-unsplash.jpg">
+					<h2>Continuous delivery enables evolutionary architecture </h2>
+					<aside class="notes">
+					<ul>
+						<li>2014, xero, product team around 230 people</li>
+						<li>monolithic architecture</li>
+						<li>big release process every 3 weeks. big video call. early morning as most customers ANZ. bagels.</li>
+						<li>limited monitoring & observability (logs, OS vitals)</li>
+						<li>batch size was HUGE. deployment frequency was low. lead time was even longer. we regularly had post to ship fixes under stress</li>
+						<li>we pushed to shift the architecture to a loosely coupled one</li>
+						<li>before a release I realised that a change in our delta would break a critical path</li>
+						<li>sleepless night. last minute merge to revert</li>
+						<li>our architecture wasn't loosely coupled so we couldn't deploy independently, which ironically prevented us from evolving our architecture</li>
+					</ul>
+						<p>
+							Photo by <a href="https://unsplash.com/@egnaro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rick Mason</a> on <a href="https://unsplash.com/s/photos/mess?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+						</p>
+					</aside>	
+				</section>
+				<section data-markdown>
+                    <textarea data-template>
+						![dscaling developer productivity](images/scaling-developer-productivity.jpg)
+
+						notes:
+						As the number of developers increases, we found:
+
+						• Low performers deploy with decreasing frequency. 
+
+						• Medium performers deploy at a constant frequency. 
+
+						• High performers deploy at a significantly increasing frequency.
+						
+						This allows our business to move faster as we add more people, not slow down, as is more typically the case.
+						We had added people, but our process was creaking at the seams.
+					</textarea>
+				</section>
+				<section data-background-transition="slide" data-background="images/gary-chan-YzSZN3qvHeo-unsplash.jpg">
+						<h2> Continuous delivery reduces waste</h2>
+
+						<aside class="notes">
+							<ul>
+								<li>a side effect of that proces above, we had dozens of branches which were "dev complete"</li>
+								<li>these branches represent inventory, work in progress, or waste</li>
+								<li>we couldn't merge and ship them, because:</li>
+								<li>they were huge and had become risky</li>
+								<li>we couldn't verify/test them as they were too risky</li>
+								<li>they weren't a top priority anymore. we missed the window of value</li>
+								<li>they were waste. they cost us developer time and added no customer value.</li>
+								<li>they continued to cost developer time as we were maintaining them</li>
+								<li>small batch size prevents this kind of waste</li>
+							</ul>
+							<ul>
+								<li>a different kind of waste is over-processing. </li>
+								<li>at uneeq we had a core system which took 4 hours of an engineer nursing an ansible script to deploy</li>
+								<li>it was prone to human error, not to mention other concerns</li>
+								<li>the business case for reducing this waste is simple. cost.</li>
+								<li>this constrained our deployment frequency which meant we missed other benefits</li>
+							</ul>
+							<ul>
+								<li>companies with high software delivery performance also have high organisational performance (profitability, market share, productivity)</li>
+								<li>given the lean manufacturing focus on reducing waste, I'm not surprised</li>
+							</ul>
+							<p>
+								Photo by <a href="https://unsplash.com/@gary_at_unsplash?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Gary Chan</a> on <a href="https://unsplash.com/s/photos/waste-software?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+							</p>
+							<a href="https://theleanway.net/The-8-Wastes-of-Lean">8 wastes of lean</a>
+						</aside>
+				</section>
+				<section data-background-transition="slide" data-background="images/dusan-veverkolog-mX2mdxhc0UM-unsplash.jpg">
+						<h2 ">Continuous delivery does not compromise stability</h2>
+
+						<aside class="notes">
+							<ul>
+								<li>counter intuitively when deployment frequency increases, stability does not decrease</li>
+								<li>this is because of the feedback loops of the other metrics</li>
+								<li>going fast doesn't mean being reckless. </li>
+								<li>when we launched uneeq creator we shipped a lot of product quickly</li>
+								<li>we noticed that incident count (change failure rate) also increased, we were rushing</li>
+								<li>Failure leads to enquiry - good culture of blameless postmortems and reflecting on failures. Good metrics culture.</li>
+							</ul>
+							<p>
+						Photo by <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dušan veverkolog</a> on <a href="https://unsplash.com/s/photos/stability?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+							</p>
+						</aside>
+					</textarea>
+				</section>
+				
+				
+
+				<section data-markdown>
+                    <textarea data-template>
+						thank you.
+					</textarea>
+				</section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            });
+        </script>
+    </body>
+
 </html>

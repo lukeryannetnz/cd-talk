@@ -64,6 +64,9 @@ html * {
   line-height: 1.3;
   font-weight: inherit; }
 
+.reveal h2 {
+  background-color: #85b9e6; }
+
 /*********************************************
  * HEADERS
  *********************************************/
