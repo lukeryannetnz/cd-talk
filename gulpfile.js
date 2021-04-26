@@ -252,7 +252,7 @@ gulp.task('package', gulp.series('default', () =>
         '*dist/**/*',
         './lib/**',
         '*images/**/*',
-        '*/plugin/**/*',
+        '*plugin/**/*',
         './**.md'
     ]).pipe(gulp.dest('./package'))
 ))
