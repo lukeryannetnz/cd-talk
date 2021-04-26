@@ -95,5 +95,9 @@
       "no-eq-null": 2,
       "no-unused-expressions": 0
     }
+  },
+  "dependencies": {
+    "deep-freeze": "^0.0.1",
+    "rollup-pluginutils": "^2.8.2"
   }
 }
