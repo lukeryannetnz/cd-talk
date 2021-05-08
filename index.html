@@ -21,7 +21,7 @@
             <div class="slides">
                 <section data-markdown>
                     <textarea data-template>
-						# continuous delivery
+						# devops and continuous delivery
 						
 						a discussion with Tradify
                     </textarea>
@@ -45,25 +45,43 @@
 							- worked on lots of cloud saas products including joining Xero as it scaled outside of ANZ and migrated to AWS
 							- worked on an early stage startup uneeq in the conversational AI space
 
-							I've got a couple of slides, with three takeaways:
-							1. Continuous delivery enables evolutionary architecture 
-							2. Continuous delivery reduces waste (and accelerates delivery of value)
-							3. Continuous delivery does not compromise stability
 						</aside>
                     </textarea>
                 </section>
+				<section>
+					<h2>DORA and Accelerate metrics</h2>
+					<ul>
+						<li>deployment frequency</li>
+						<li>lead time</li>
+						<li>change failure percentage</li>
+						<li>time to restore</li>
+					</ul>
+					<aside class="notes">
+						DevOps Research and Assessment (DORA). <b>State of devops report</b>
+						Organisation acquired by google
+						Have done research into <b>high performing software engineering organisations</b>
+						Found that these four metrics correlate with high organisational performance
+						Published in a book called accelerate where they call out <b>5 capabilities to focus on</b> improving.  
+						<b>Continuous delivery is one</b>, Karl mentioned that you are looking to deploy more often
+
+						I've got a couple of slides, with three takeaways:
+						1. Continuous delivery enables evolutionary architecture 
+						2. Continuous delivery reduces waste (and accelerates delivery of value)
+						3. Continuous delivery does not compromise stability
+					</aside>
+				</section>
 				<section data-background-transition="slide" data-background="images/rick-mason-2FaCKyEEtis-unsplash.jpg">
 					<h2>Continuous delivery enables evolutionary architecture </h2>
 					<aside class="notes">
 					<ul>
 						<li>2014, xero, product team around 230 people</li>
 						<li>monolithic architecture</li>
-						<li>big release process every 3 weeks. big video call. early morning as most customers ANZ. bagels.</li>
+						<li><b>big release process every 3 weeks. big video call.</b> early morning as most customers ANZ. bagels.</li>
 						<li>limited monitoring & observability (logs, OS vitals)</li>
 						<li>batch size was HUGE. deployment frequency was low. lead time was even longer. we regularly had post to ship fixes under stress</li>
 						<li>we pushed to shift the architecture to a loosely coupled one</li>
 						<li>before a release I realised that a change in our delta would break a critical path</li>
-						<li>sleepless night. last minute merge to revert</li>
+						<li><b>sleepless night. last minute merge to revert</b></li>
 						<li>our architecture wasn't loosely coupled so we couldn't deploy independently, which ironically prevented us from evolving our architecture</li>
 					</ul>
 						<p>
@@ -77,13 +95,14 @@
 						<aside class="notes">
 						As the number of developers increases, we found:
 
-						• Low performers deploy with decreasing frequency. 
+						<ul>
+						<li> Low performers deploy with decreasing frequency. </li>
 
-						• Medium performers deploy at a constant frequency. 
+						<li>Medium performers deploy at a constant frequency. </li>
 
-						• High performers deploy at a significantly increasing frequency.
-						
-						This allows our business to move faster as we add more people, not slow down, as is more typically the case.
+						<li>High performers deploy at a significantly increasing frequency.</li>
+					</ul>
+						This allows our business to move faster as we add more people, not slow down.
 						We had added people, but our process was creaking at the seams.
 						</aside>
 				</section>
@@ -96,7 +115,6 @@
 								<li>these branches represent inventory, work in progress, or waste</li>
 								<li>we couldn't merge and ship them, because:</li>
 								<li>they were huge and had become risky</li>
-								<li>we couldn't verify/test them as they were too risky</li>
 								<li>they weren't a top priority anymore. we missed the window of value</li>
 								<li>they were waste. they cost us developer time and added no customer value.</li>
 								<li>they continued to cost developer time as we were maintaining them</li>
@@ -104,7 +122,7 @@
 							</ul>
 							<ul>
 								<li>a different kind of waste is over-processing. </li>
-								<li>at uneeq we had a core system which took 4 hours of an engineer nursing an ansible script to deploy</li>
+								<li>at uneeq we had a core system which took <b>4 hours of an engineer nursing an ansible script</b> to deploy</li>
 								<li>it was prone to human error, not to mention other concerns</li>
 								<li>the business case for reducing this waste is simple. cost.</li>
 								<li>this constrained our deployment frequency which meant we missed other benefits</li>

@@ -2,7 +2,7 @@
 
 ![Node.js CI/CD](https://github.com/lukeryannetnz/cd-talk/workflows/Node.js%20CI/CD/badge.svg)
 
-This is a talk on continuous delivery, the accelerate metrics and how they enable teams to sustain  velocity and quality.
+This is a talk on devops, continuous delivery, the accelerate metrics and how they enable teams to sustain  velocity and quality.
 
 The most recent version is published here https://lukeryan.net.nz/cd-talk/
 
